@@ -24,5 +24,8 @@ RUN cd /opt/soft/mysql-5.7.22 && cmake \
 -DWITH_BOOST=/opt/soft/mysql-5.7.22/boost/boost_1_59_0/ \
 && make && make install
 
-RUN rm -rf /op/soft
-CMD [ "/opt/mysql57/bin/mysqld_safe", "--user=mysql" ]
+RUN rm -rf /opt/soft
+COPY docker-entrypoint.sh /
+CMD [ "/docker-entrypoint.sh" ]
+EXPOSE 3306
+VOLUME /opt/mysql57/var
