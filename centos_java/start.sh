@@ -11,7 +11,7 @@ else
     JAVA_MEM_OPTS=" -server -Xms1g -Xmx1g -XX:PermSize=128m -XX:SurvivorRatio=2 -XX:+UseParallelGC "
 fi
 JAVA_OPTS=" -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true "
-java $JAVA_OPTS $JAVA_MEM_OPTS -jar $TARGET >> $STDOUT_FILE 2>&1 
+java -Duser.timezone=GMT+08 $JAVA_OPTS $JAVA_MEM_OPTS -jar $TARGET >> $STDOUT_FILE 2>&1 
 
 sleep 3
 PIDS=`ps -ef | grep java | grep "$TARGET" | awk '{print $2}'`
